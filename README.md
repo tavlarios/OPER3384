@@ -1,5 +1,4 @@
-# <img src="https://upload.wikimedia.org/wikipedia/en/0/00/Boston_College_seal.svg" width="25" height="25">
- OPER3384  | Predictive Analytics
+# OPER3384 &nbsp; <img src="https://upload.wikimedia.org/wikipedia/en/0/00/Boston_College_seal.svg" width="30" height="30"> &nbsp; Predictive Analytics
 
 [![badge](https://img.shields.io/static/v1?label=Semester%20Project%20%20%E2%80%A2%20%20Project%20Team%2010&message=GitHub%20Repository&style=plastic&logo=GitHub&color=blueviolet)](https://mybinder.org/v2/gh/tavlarios/OPER3384/HEAD?filepath=IMDB%20Project.ipynb)
 
