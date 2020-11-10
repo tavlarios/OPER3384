@@ -3,6 +3,9 @@
 [![badge](https://img.shields.io/static/v1?label=Semester%20Project%20%20%E2%80%A2%20%20Project%20Team%2010&message=GitHub%20Repository&style=plastic&logo=GitHub&color=blueviolet)](https://mybinder.org/v2/gh/tavlarios/OPER3384/HEAD?filepath=IMDB%20Project.ipynb)
 
 
+[[_TOC_]]
+
+
 ## Team Members
 - Wendy N. Merchant
 - Rebecca L. Redmond
@@ -11,6 +14,7 @@
 
 
 ## Project Assignments
+
 | Badge | Deliverable \# | Description
 |:-------:|:-:|---|
 | [![badge](https://img.shields.io/static/v1?label=Project%20Proposal%20Memo&message=PDF&style=plastic&logo=Adobe%20Acrobat%20Reader&color=informational)](https://github.com/tavlarios/OPER3384/blob/main/Team%2010%20%E2%80%93%20Project%20Proposal%20Memo.pdf) | 1 | *1-2 page memo introducing your data and proposing several business questions for further research.* |
@@ -19,6 +23,7 @@
 
 
 ## Binder Environments
+
 Click the badge to view, interact, or execute the source code.
 
 [![badge](https://img.shields.io/static/v1?label=Binder&message=Home%20Page&style=plastic&color=lightgrey)](https://mybinder.org/v2/gh/tavlarios/OPER3384/HEAD)
