@@ -13,7 +13,7 @@
 ## Project Assignments
 | Badge | Deliverable \# | Description
 |:-------:|:-:|---|
-| _ | 1 | *1-2 page memo introducing your data and proposing several business questions for further research.* |
+| [![badge](https://img.shields.io/static/v1?label=Project%20Proposal%20Memo&message=PDF&style=plastic&logo=Adobe Acrobat Reader&color=informational)](https://github.com/tavlarios/OPER3384/blob/main/Team%2010%20%E2%80%93%20Project%20Proposal%20Memo.pdf) | 1 | *1-2 page memo introducing your data and proposing several business questions for further research.* |
 | _ | 2 | *1-page business e-mail providing findings from preliminary data analysis with 1-page summary “attachment”.* |
 
 
