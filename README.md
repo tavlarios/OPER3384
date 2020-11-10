@@ -10,6 +10,14 @@
 - John L. Trotto
 
 
+## Project Assignments
+| Badge | Deliverable \# | Description
+|:-------:|:-:|---|
+| _ | 1 | *1-2 page memo introducing your data and proposing several business questions for further research.* |
+| _ | 2 | *1-page business e-mail providing findings from preliminary data analysis with 1-page summary “attachment”.* |
+
+
+
 ## Binder Environments
 Click the badge to view, interact, or execute the source code.
 
