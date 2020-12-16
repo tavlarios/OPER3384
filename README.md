@@ -318,7 +318,7 @@ cat("Training MSE: ", trainMSE3, "\n    Test MSE: ", testMSE3)
     ## Training MSE:  5679.892 
     ##     Test MSE:  7132.969
 
-**Final Model**
+**Final Model** (*excluding Revenue Expected Values*)
 
 ``` r
 tree1 <- rpart(Revenue ~ .-ZEV_Revenue_Actors -ZEV_Revenue_Genre -ZEV_Revenue_Director,
