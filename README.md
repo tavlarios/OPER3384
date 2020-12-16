@@ -22,12 +22,69 @@
 
 
 ## Dataset
-
-<!---<figure class="video_container">
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTgHYdm7o9LgQqNQub33mN3soQ8QpPYqWdg-XRCyA8bmWNQMgTRkXl1MfqjewGhijE8vxMzFTNqXOHI/pubhtml?gid=1733097141&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-</figure>--->
+*Sample of 5 rows*
 
 
+|                hash |   Rank | Title                  | Genre                            | 
+Description                                                                                  
+| Director           | Actors                                                                
+|   Year |   Runtime |   Rating |   Votes |   Revenue |   Metascore |   ZEV_Rating_Actors |  
+ZEV_Votes_Actors |   ZEV_Metascore_Actors |   ZEV_Revenue_Actors |   ZEV_Rating_Genre |   
+ZEV_Votes_Genre |   ZEV_Metascore_Genre |   ZEV_Revenue_Genre |   ZEV_Rating_Director |   
+ZEV_Votes_Director |   ZEV_Metascore_Director |   ZEV_Revenue_Director |   Top_Director |   
+training |     Votes:Rating |
+|--------------------:|-------:|:-----------------------|:---------------------------------|:
+---------------------------------------------------------------------------------------------
+----------------------------------------------------------|:-------------------|:------------
+------------------------------------------------------------------|-------:|----------:|-----
+----:|--------:|----------:|------------:|--------------------:|-------------------:|--------
+---------------:|---------------------:|-------------------:|------------------:|------------
+----------:|--------------------:|----------------------:|---------------------:|------------
+-------------:|-----------------------:|---------------:|-----------:|-----------------:|
+| -131466537480810030 |    915 | Notorious              | ('BIOGRAPHY', 'CRIME', 'DRAMA')  | 
+The life and death story of Notorious B.I.G. (a.k.a. Christopher Wallace), who came straight 
+out of Brooklyn to take the world of rap music by storm.  | George Tillman Jr. | ['ANTHONY 
+MACKIE', 'DEREK LUKE', 'JAMAL WOOLARD', 'MOMO DIONE']               |   2009 |       122 |   
+6.7 |   33007 |     36.84 |          60 |             2.87184 |            94474.1 |         
+25.3949 |              34.891  |            4.79953 |  761860           |               
+46.7792 |             210.646 |               4.36957 |      47911.5         |               
+36.5084 |                54.2466 |              0 |          1 | 221147           |
+| 2367002059956613531 |     37 | Interstellar           | ('ADVENTURE', 'DRAMA', 'SCI-FI') | 
+A team of explorers travel through a wormhole in space in an attempt to ensure humanity's 
+survival.                                                    | Christopher Nolan  | ['ANNE 
+HATHAWAY', 'JESSICA CHASTAIN', 'MACKENZIE FOY', 'MATTHEW MCCONAUGHEY'] |   2014 |       169 |
+8.6 | 1047747 |    187.99 |          74 |             6.58716 |           966459   |         
+65.8011 |             376.553  |            5.52278 |       1.35169e+06 |               
+55.7579 |             576.636 |               7.46994 |          1.79192e+06 |               
+80.636  |               842.959  |              1 |          1 |      9.01062e+06 |
+| 2276415888854380052 |    656 | Public Enemies         | ('BIOGRAPHY', 'CRIME', 'DRAMA')  | 
+The Feds try to take down notorious American gangsters John Dillinger, Baby Face Nelson and 
+Pretty Boy Floyd during a booming crime wave in the 1930s. | Michael Mann       | ['CHRISTIAN
+BALE', 'CHRISTIAN STOLTE', 'JASON CLARKE', 'JOHNNY DEPP']         |   2009 |       140 |     
+7   |  240323 |     97.03 |          70 |             6.59386 |           997540   |         
+66.4809 |             435.267  |            4.79953 |  761860           |               
+46.7792 |             210.646 |               3.30926 |      77468.4         |               
+33.5293 |                57.9354 |              0 |          1 |      1.68226e+06 |
+|   20417234348950511 |    279 | Everybody Wants Some!! | ('COMEDY',)                      | 
+In 1980, a group of college baseball players navigate their way through the freedoms and 
+responsibilities of unsupervised adulthood.                   | Richard Linklater  | ['BLAKE 
+JENNER', 'RYAN GUZMAN', 'TYLER HOECHLIN', 'ZOEY DEUTCH']              |   2016 |       117 | 
+7   |   36312 |      3.37 |          83 |             3.21142 |            38622.4 |         
+29.0897 |              18.7087 |            5.09468 |  809584           |               
+50.3605 |             420.302 |               3.6448  |      88293.8         |               
+45.0732 |                15.9847 |              0 |          1 | 254184           |
+| 5278245026850910347 |    756 | The Road               | ('ADVENTURE', 'DRAMA')           | 
+In a dangerous post-apocalyptic world, an ailing father defends his son as they slowly travel
+to the sea.                                              | John Hillcoat      | ['CHARLIZE 
+THERON', 'KODI SMIT-MCPHEE', 'ROBERT DUVALL', 'VIGGO MORTENSEN']   |   2009 |       111 |    
+7.3 |  187302 |      0.06 |         nan |             4.44242 |           359493   |         
+35.7994 |             122.587  |            6.93253 |       1.68097e+06 |               
+73.3552 |             713.022 |               4.45009 |     117806           |               
+31.4812 |                27.8688 |              0 |          0 |      1.3673e+06  |
+
+
+
+---
 
 ## R Models
 
@@ -94,7 +151,7 @@ Includes new variables for:
   - ```ZEV_Metascore_Director``` – Expected Value of Metascore, based on z-score of mean Metascore for a Director's previous movies
   - ```ZEV_Revenue_Director``` – Expected Value of Revenue contribution for a Director's previous movies, based on z-score of mean contribution for a Director's previous movies
   
-  *Note that "Revenue contribution" is the portion of revenue attributed to a given factor peer (e.g., ```Baba Booey```), as a percentage of all Revenue generated for all factors (e.g., ```Directors```).*
+  *Note that "Revenue contribution" is the portion of revenue attributed to a given factor peer (e.g., ```Baba Booey```), as a percentage of all Revenue generated for all peers (e.g., ```Directors```).*
   
 
 *Python Setup*
