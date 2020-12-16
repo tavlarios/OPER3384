@@ -23,7 +23,7 @@
 
 ## Dataset
 
-In addition to the variables from the original dataset, we calculated expected values of the quantitative variables, based on each movies' categorical attributes. These include:
+In addition to the variables from the original [![badge](https://img.shields.io/static/v1?label=IMDB%20Dataset&message=Kaggle&style=plastic&logo=Kaggle&color=20BEFF)](https://www.kaggle.com/PromptCloudHQ/imdb-data), we calculated expected values of the quantitative variables, based on each movies' categorical attributes. These include:
   *Note that "Revenue contribution" is the portion of revenue attributed to a given factor peer (e.g., ```Baba Booey```), as a percentage of all Revenue generated for all peers (e.g., ```Directors```).*
 
 | Column                       | Description                                                 |
