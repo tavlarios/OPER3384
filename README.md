@@ -22,17 +22,46 @@
 
 ## Dataset
 
-
-<figure class="video_container">
+<!---<figure class="video_container">
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTgHYdm7o9LgQqNQub33mN3soQ8QpPYqWdg-XRCyA8bmWNQMgTRkXl1MfqjewGhijE8vxMzFTNqXOHI/pubhtml?gid=1733097141&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-</figure>
-
+</figure>--->
 
 
 
 ## R Models
 
 
+```r
+imdb.ia <- read.csv("IMDB.csv")
+imdb.dm1 <- read.csv("IMDB_DM1.csv")
+imdb.dm2 <- read.csv("IMDB_DM2.csv")
+```
+
+### Initial Analysis
+
+Histograms included for IMDB User Rating and Critic Metascore. Also included are bar charts for both genre 1 (the first genre listed for each movie) and the top 15 directors.
+
+```r
+gf_histogram(~Rating, data = imdb.ia, xlab = "IMDB User Rating", ylab = "Count", title = "Counts of IMDB User Rating")
+gf_histogram(~Metascore_adj, data = imdb.ia, xlab = "Critic Metascore", ylab = "Count", title = "Counts of Critic Metascore")
+gf_bar(~fct_infreq(Genre_1), data = imdb.ia, xlab = "Primary Genre", ylab = "Count of Popular Movies", title = "Genre of most Popular movies, 2006-2016")%>%gf_theme(axis.text.x=element_text(angle=60,hjust=1))
+imdb.ia1 <- filter(imdb.ia, Yes_Top==1)
+gf_bar(~fct_infreq(Director), xlab="Director", title="Number of Movies for Each Top Director", data=imdb.ia1)%>%gf_theme(axis.text.x=element_text(angle=60,hjust=1))
+```
+
+
+Analysis included a t-test for difference in mean revenue between the top directors and the other directors, an ANOVA test for the relationship between genre and revenue for a movie, and a linear model predicting revenue from votes, rating, and an interaction variable between votes and rating.
+
+```
+favstats(~Revenue_Millions | Yes_Top, data=imdb.ia)
+t.test(Revenue_Millions~Yes_Top, data = imdb.ia, mu=0)
+
+anova1 <- aov(Revenue_Millions~as.factor(Genre_1), data=imdb.ia)
+summary(anova1)
+
+Votes <- lm(Revenue_Millions~Votes+Rating+Votes*Rating, data = imdb.ia)
+msummary(Votes)
+```
 
 
 
@@ -43,18 +72,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+----
 ## Binder Environments
 
 Click the badge to view, interact, or execute the source code.
