@@ -237,24 +237,6 @@ All models are partitioned. Models 2 and 3 use the same dataset, with binary var
 
 
 ***Importing Data***
-
-Includes new variables for:
-  - ```ZEV_Rating_Actors``` – Expected Value of Rating, based on z-score of mean Rating of all Actors' previous movies
-  - ```ZEV_Votes_Actors``` – Expected Value of Votes, based on z-score of mean Votes of all Actors' previous movies
-  - ```ZEV_Metascore_Actors``` – Expected Value of Metascore, based on z-score of mean Metascore of all Actors' previous movies
-  - ```ZEV_Revenue_Actors``` – Expected Value of Revenue contribution for each involved actor (as a percentage of all previous movies), based on z-score of mean contribution of all Actors' previous movies
-  
-  - ```ZEV_Rating_Genre``` – Expected Value of Rating, based on z-score of mean Rating of all Genres of the movie
-  - ```ZEV_Votes_Genre``` – Expected Value of Votes, based on z-score of mean Votes of all Genres of the movie
-  - ```ZEV_Metascore_Genre``` – Expected Value of Metascore, based on z-score of mean Metascore of all Genres of the movie
-  - ```ZEV_Revenue_Genre``` – Expected Value of Revenue contribution for each Genre listed, based on z-score of mean contribution for previous Genres
-  
-  - ```ZEV_Rating_Director``` – Expected Value of Rating, based on z-score of mean Rating for a Director's previous movies
-  - ```ZEV_Votes_Director``` – Expected Value of Votes, based on z-score of mean Votes for a Director's previous movies
-  - ```ZEV_Metascore_Director``` – Expected Value of Metascore, based on z-score of mean Metascore for a Director's previous movies
-  - ```ZEV_Revenue_Director``` – Expected Value of Revenue contribution for a Director's previous movies, based on z-score of mean contribution for a Director's previous movies
-  
-  *Note that "Revenue contribution" is the portion of revenue attributed to a given factor peer (e.g., ```Baba Booey```), as a percentage of all Revenue generated for all peers (e.g., ```Directors```).*
   
 
 *Python Setup*
