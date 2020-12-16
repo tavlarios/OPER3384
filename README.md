@@ -26,7 +26,7 @@
 
 <table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="text-align: right;" height="20px">
       <th></th>
       <th>Rank</th>
       <th>Title</th>
@@ -56,7 +56,7 @@
       <th>training</th>
       <th>Votes:Rating</th>
     </tr>
-    <tr>
+    <tr height="20px">
       <th>hash</th>
       <th></th>
       <th></th>
@@ -88,7 +88,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr height="20px">
       <th>787751000732048072</th>
       <td>528</td>
       <td>The Green Inferno</td>
@@ -119,7 +119,7 @@ discover that they are not alone, and that no good deed goes unpunished.</td>
       <td>1</td>
       <td>142889.4</td>
     </tr>
-    <tr>
+    <tr height="20px">
       <th>8408114765497397492</th>
       <td>407</td>
       <td>Zero Dark Thirty</td>
@@ -151,7 +151,7 @@ May 2011.</td>
       <td>0</td>
       <td>1677291.4</td>
     </tr>
-    <tr>
+    <tr height="20px">
       <th>2716058472776138215</th>
       <td>787</td>
       <td>The Secret Scripture</td>
@@ -181,7 +181,7 @@ May 2011.</td>
       <td>0</td>
       <td>2570.4</td>
     </tr>
-    <tr>
+    <tr height="20px">
       <th>1563504084438618420</th>
       <td>693</td>
       <td>Genius</td>
@@ -212,7 +212,7 @@ works by Thomas Wolfe, Ernest Hemingway, F. Scott Fitzgerald and others.</td>
       <td>1</td>
       <td>69602.0</td>
     </tr>
-    <tr>
+    <tr height="20px">
       <th>4810770130688835627</th>
       <td>663</td>
       <td>Gone Baby Gone</td>
