@@ -1,0 +1,141 @@
+---
+title: "IMDB Analysis"
+author: "Rebecca Redmond, Wendy Merchant, George Tavlarios, John Trotto"
+date: "12/15/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(size="small", warning=F, message=F)
+```
+
+
+```{r, include=FALSE}
+library(mosaic)
+library(ggformula)
+library(tidyverse)
+library(rpart)
+library(rpart.plot)
+library(lattice)
+library(caret)
+library(ggplot2)
+library(neuralnet)
+library(e1071)
+
+```
+
+
+```{r, include=FALSE}
+imdb.ia <- read.csv("IMDB.csv")
+imdb.dm1 <- read.csv("IMDB_DM1.csv")
+imdb.dm2 <- read.csv("IMDB_DM2.csv")
+```
+
+## Initial Analysis
+Histograms included for IMDB User Rating and Critic Metascore. Also included are bar charts for both genre 1 (the first genre listed for each movie) and the top 15 directors.
+
+```{r}
+gf_histogram(~Rating, data = imdb.ia, xlab = "IMDB User Rating", ylab = "Count", title = "Counts of IMDB User Rating")
+
+gf_histogram(~Metascore_adj, data = imdb.ia, xlab = "Critic Metascore", ylab = "Count", title = "Counts of Critic Metascore")
+
+gf_bar(~fct_infreq(Genre_1), data = imdb.ia, xlab = "Primary Genre", ylab = "Count of Popular Movies", title = "Genre of most Popular movies, 2006-2016")%>%gf_theme(axis.text.x=element_text(angle=60,hjust=1))
+
+imdb.ia1 <- filter(imdb.ia, Yes_Top==1)
+gf_bar(~fct_infreq(Director), xlab="Director", title="Number of Movies for Each Top Director", data=imdb.ia1)%>%gf_theme(axis.text.x=element_text(angle=60,hjust=1))
+
+```
+
+Analysis included a t-test for difference in mean revenue between the top directors and the other directors, an ANOVA test for the relationship between genre and revenue for a movie, and a linear model predicting revenue from votes, rating, and an interaction variable between votes and rating.
+
+```{r}
+favstats(~Revenue_Millions | Yes_Top, data=imdb.ia)
+t.test(Revenue_Millions~Yes_Top, data = imdb.ia, mu=0)
+
+anova1 <- aov(Revenue_Millions~as.factor(Genre_1), data=imdb.ia)
+summary(anova1)
+
+Votes <- lm(Revenue_Millions~Votes+Rating+Votes*Rating, data = imdb.ia)
+msummary(Votes)
+```
+
+```{r, include=FALSE}
+TukeyHSD(anova1)
+
+```
+
+
+## Data Mining
+All models are partitioned. Models 2 and 3 use the same dataset, with binary variables for movie genres. Model 4 uses only the quantitative variables.
+
+Model 1: Stepwise Regression
+
+
+Model 2: Regression Tree
+
+```{r}
+
+treedata <- filter(imdb.dm1, Revenue_Millions>=0)
+
+RevenueTree <-rpart(Revenue_Millions~.-training-Year,data= treedata[treedata$training == 1, 1:21], method = "anova")
+rpart.plot(RevenueTree,nn=TRUE,roundint=FALSE,digits
+           = 4, type = 2, cex = 0.7, box.palette = "Purples")
+
+```
+
+
+Model 3: k-NN
+
+```{r}
+
+set.seed(458)
+knndata <- filter(imdb.dm1, !is.na(Revenue_Millions), !is.na(Metascore_adj))
+knndata <- select(knndata, -Year, -Rating, -Metascore_adj)
+
+knnmodel <- train(Revenue_Millions~.-training, data=knndata[knndata$training==1, 1:18], method="knn", preProcess=c("center", "scale"), tuneLength=10)
+knnmodel
+plot(knnmodel)
+
+knnpred <- mutate(knndata, predicted=predict(knnmodel, knndata))
+
+
+```
+
+
+Model 4: Neural Networks
+
+```{r}
+
+nndata <- select(imdb.dm2, Year:training)
+nndata <- filter(nndata, !is.na(Revenue),!is.na(Metascore))
+
+nnnorm <- as.data.frame(lapply(nndata[ , 1:7],
+                                function(x) (x-min(x))/(max(x)-min(x))))
+
+set.seed(1234)
+nn <- neuralnet(Revenue~.-training, data = nnnorm[nnnorm$training==1, 1:7], hidden = 1)
+plot(nn)
+
+minrev <- min(nndata$Revenue)
+rangerev <- max(nndata$Revenue) - min(nndata$Revenue)
+nndata <- mutate(nndata, predicted=predict(nn,nnnorm))
+nnpred <- as.data.frame(lapply(nndata[ , 8], 
+                                function(x) (x*rangerev)+minrev))
+df_transpose2 = t(nnpred)
+nndata <- mutate(nndata, predicted=as.numeric(df_transpose2[ ,1]))
+
+```
+
+
+```{r, include=FALSE}
+
+#kNN MSE
+knntrainMSE <- mean((knnpred$Revenue_Millions[knnpred$training==1]-knnpred$predicted[knnpred$training==1])^2)
+knntestMSE <- mean((knnpred$Revenue_Millions[knnpred$training==0]-knnpred$predicted[knnpred$training==0])^2)
+
+#NN MSE
+nntrainMSE <- mean((nndata$Revenue[nndata$training==1]-nndata$predicted[nndata$training==1])^2)
+nntestMSE <-mean((nndata$Revenue[nndata$training==0]-nndata$predicted[nndata$training==0])^2)
+
+```
+
