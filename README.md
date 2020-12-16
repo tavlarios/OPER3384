@@ -281,7 +281,6 @@ nndata <- mutate(nndata, predicted=as.numeric(df_transpose2[ ,1]))
 ```
 
 
-
 ```r
 #kNN MSE
 knntrainMSE <- mean((knnpred$Revenue_Millions[knnpred$training==1]-knnpred$predicted[knnpred$training==1])^2)
@@ -290,6 +289,64 @@ knntestMSE <- mean((knnpred$Revenue_Millions[knnpred$training==0]-knnpred$predic
 nntrainMSE <- mean((nndata$Revenue[nndata$training==1]-nndata$predicted[nndata$training==1])^2)
 nntestMSE <-mean((nndata$Revenue[nndata$training==0]-nndata$predicted[nndata$training==0])^2)
 ```
+
+
+### Model 4: *Regression Tree (with Expected Value factors)*
+
+**Base Model**
+
+``` r
+tree0 <- rpart(Revenue ~ 
+                . -ZEV_Rating_Actors -ZEV_Votes_Actors -ZEV_Metascore_Actors -ZEV_Revenue_Actors -ZEV_Rating_Genre -ZEV_Votes_Genre -ZEV_Metascore_Genre -ZEV_Revenue_Genre -ZEV_Rating_Director -ZEV_Votes_Director -ZEV_Metascore_Director -ZEV_Revenue_Director -Top_Director,
+               data=NS[NS$training==1,9:26],
+               method="anova")
+rpart.plot(tree0, nn=TRUE, yesno=2, type=0)
+```
+
+<img src="README_figs/README-unnamed-chunk-13-1.png" width="672" />
+
+***Train-Test MSE***
+
+``` r
+pred3 <- mutate(NS, pred3_Revenue=predict(tree0, NS))
+trainMSE3 <- mean((pred3$Revenue[pred3$training==1] - pred3$pred3_Revenue[pred3$training==1])^2)
+testMSE3  <- mean((pred3$Revenue[pred3$training==0] - pred3$pred3_Revenue[pred3$training==0])^2)
+
+cat("Training MSE: ", trainMSE3, "\n    Test MSE: ", testMSE3)
+```
+
+    ## Training MSE:  5679.892 
+    ##     Test MSE:  7132.969
+
+**Final Model**
+
+``` r
+tree1 <- rpart(Revenue ~ .-ZEV_Revenue_Actors -ZEV_Revenue_Genre -ZEV_Revenue_Director,
+               data=NS[NS$training==1,9:26],
+               method="anova")
+rpart.plot(tree1, nn=TRUE, yesno=2, type=0)
+```
+
+<img src="README_figs/README-unnamed-chunk-15-1.png" width="672" />
+
+***Train-Test MSE***
+
+``` r
+pred4 <- mutate(NS, pred4_Revenue=predict(tree1, NS))
+trainMSE4 <- mean((pred4$Revenue[pred4$training==1] - pred4$pred4_Revenue[pred4$training==1])^2)
+testMSE4  <- mean((pred4$Revenue[pred4$training==0] - pred4$pred4_Revenue[pred4$training==0])^2)
+
+cat("Training MSE: ", trainMSE4, "\n    Test MSE: ", testMSE4)
+```
+
+    ## Training MSE:  4845.262 
+    ##     Test MSE:  6247.79
+
+
+
+
+
+---
 
 
 
