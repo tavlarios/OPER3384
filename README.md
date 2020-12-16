@@ -23,23 +23,33 @@
 
 ## Dataset
 
+In addition to the variables from the original dataset, we calculated expected values of the quantitative variables, based on each movies' categorical attributes. These include:
+  - ```ZEV_Rating_Actors``` – Expected Value of Rating, based on z-score of mean Rating of all Actors' previous movies
+  - ```ZEV_Votes_Actors``` – Expected Value of Votes, based on z-score of mean Votes of all Actors' previous movies
+  - ```ZEV_Metascore_Actors``` – Expected Value of Metascore, based on z-score of mean Metascore of all Actors' previous movies
+  - ```ZEV_Revenue_Actors``` – Expected Value of Revenue contribution for each involved actor (as a percentage of all previous movies), based on z-score of mean contribution of all Actors' previous movies
+  
+  - ```ZEV_Rating_Genre``` – Expected Value of Rating, based on z-score of mean Rating of all Genres of the movie
+  - ```ZEV_Votes_Genre``` – Expected Value of Votes, based on z-score of mean Votes of all Genres of the movie
+  - ```ZEV_Metascore_Genre``` – Expected Value of Metascore, based on z-score of mean Metascore of all Genres of the movie
+  - ```ZEV_Revenue_Genre``` – Expected Value of Revenue contribution for each Genre listed, based on z-score of mean contribution for previous Genres
+  
+  - ```ZEV_Rating_Director``` – Expected Value of Rating, based on z-score of mean Rating for a Director's previous movies
+  - ```ZEV_Votes_Director``` – Expected Value of Votes, based on z-score of mean Votes for a Director's previous movies
+  - ```ZEV_Metascore_Director``` – Expected Value of Metascore, based on z-score of mean Metascore for a Director's previous movies
+  - ```ZEV_Revenue_Director``` – Expected Value of Revenue contribution for a Director's previous movies, based on z-score of mean contribution for a Director's previous movies
+  
+  - ```Top_Director``` – A binary flag indicating whether or not a movie's director was in the top 15 directors, by number of movies in the dataset.
+  
+  *Note that "Revenue contribution" is the portion of revenue attributed to a given factor peer (e.g., ```Baba Booey```), as a percentage of all Revenue generated for all peers (e.g., ```Directors```).*
+
+
+Here is a sample of the values, which can be found in the [![badge](https://img.shields.io/static/v1?label=IMDB%20TrainTestDataset&message=CSV&style=plastic&logo=Microsoft%20Excel&color=success)](https://github.com/tavlarios/OPER3384/blob/main/IMDB_TrainTestDataset.csv) :
 
 <table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;" height="20px">
+    <tr style="text-align: right;">
       <th></th>
-      <th>Rank</th>
-      <th>Title</th>
-      <th>Genre</th>
-      <th>Description</th>
-      <th>Director</th>
-      <th>Actors</th>
-      <th>Year</th>
-      <th>Runtime</th>
-      <th>Rating</th>
-      <th>Votes</th>
-      <th>Revenue</th>
-      <th>Metascore</th>
       <th>ZEV_Rating_Actors</th>
       <th>ZEV_Votes_Actors</th>
       <th>ZEV_Metascore_Actors</th>
@@ -56,20 +66,8 @@
       <th>training</th>
       <th>Votes:Rating</th>
     </tr>
-    <tr height="20px">
+    <tr>
       <th>hash</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -88,164 +86,98 @@
     </tr>
   </thead>
   <tbody>
-    <tr height="20px">
-      <th>787751000732048072</th>
-      <td>528</td>
-      <td>The Green Inferno</td>
-      <td>(ADVENTURE, HORROR)</td>
-      <td>A group of student activists travels to the Amazon to save the rain forest and soon
-discover that they are not alone, and that no good deed goes unpunished.</td>
-      <td>Eli Roth</td>
-      <td>[AARON BURNS, ARIEL LEVY, KIRBY BLISS BLANTON, LORENZA IZZO]</td>
-      <td>2013</td>
-      <td>100</td>
-      <td>5.4</td>
-      <td>26461</td>
-      <td>7.19</td>
-      <td>38.0</td>
-      <td>2.360227</td>
-      <td>20821.111964</td>
-      <td>18.626038</td>
-      <td>3.233097</td>
-      <td>3.691475</td>
-      <td>7.850377e+05</td>
-      <td>32.763256</td>
-      <td>468.315000</td>
-      <td>3.765595</td>
-      <td>41857.046487</td>
-      <td>36.508368</td>
-      <td>13.775852</td>
+    <tr>
+      <th>5793697027682247240</th>
+      <td>4.8870</td>
+      <td>533673.3174</td>
+      <td>51.1402</td>
+      <td>245.0064</td>
+      <td>4.1829</td>
+      <td>5.561596e+05</td>
+      <td>39.8220</td>
+      <td>151.9848</td>
+      <td>5.5909</td>
+      <td>276075.5967</td>
+      <td>63.3201</td>
+      <td>144.0289</td>
       <td>0</td>
       <td>1</td>
-      <td>142889.4</td>
+      <td>3705809.8</td>
     </tr>
-    <tr height="20px">
-      <th>8408114765497397492</th>
-      <td>407</td>
-      <td>Zero Dark Thirty</td>
-      <td>(DRAMA, HISTORY, THRILLER)</td>
-      <td>A chronicle of the decade-long hunt for al-Qaeda terrorist leader Osama bin Laden 
-after the September 2001 attacks, and his death at the hands of the Navy S.E.A.L.s Team 6 in 
-May 2011.</td>
-      <td>Kathryn Bigelow</td>
-      <td>[CHRIS PRATT, JESSICA CHASTAIN, JOEL EDGERTON, MARK STRONG]</td>
-      <td>2012</td>
-      <td>157</td>
-      <td>7.4</td>
-      <td>226661</td>
-      <td>95.72</td>
-      <td>95.0</td>
-      <td>6.564821</td>
-      <td>698756.433580</td>
-      <td>71.919628</td>
-      <td>352.690274</td>
-      <td>4.711283</td>
-      <td>7.310547e+05</td>
-      <td>46.416928</td>
-      <td>208.897700</td>
-      <td>3.658223</td>
-      <td>158134.596874</td>
-      <td>46.190377</td>
-      <td>61.991336</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1677291.4</td>
-    </tr>
-    <tr height="20px">
-      <th>2716058472776138215</th>
-      <td>787</td>
-      <td>The Secret Scripture</td>
-      <td>(DRAMA,)</td>
-      <td>A woman keeps a diary of her extended stay at a mental hospital.</td>
-      <td>Jim Sheridan</td>
-      <td>[AIDAN TURNER, ERIC BANA, ROONEY MARA, THEO JAMES]</td>
-      <td>2016</td>
-      <td>108</td>
-      <td>6.8</td>
-      <td>378</td>
-      <td>NaN</td>
-      <td>37.0</td>
-      <td>4.534015</td>
-      <td>239543.531535</td>
-      <td>41.238127</td>
-      <td>88.559037</td>
-      <td>9.000000</td>
-      <td>1.791916e+06</td>
-      <td>100.000000</td>
-      <td>489.414866</td>
-      <td>2.557656</td>
-      <td>147.601000</td>
-      <td>17.889121</td>
-      <td>0.000000</td>
-      <td>0</td>
-      <td>0</td>
-      <td>2570.4</td>
-    </tr>
-    <tr height="20px">
-      <th>1563504084438618420</th>
-      <td>693</td>
-      <td>Genius</td>
-      <td>(BIOGRAPHY, DRAMA)</td>
-      <td>A chronicle of Max Perkins's time as the book editor at Scribner, where he oversaw 
-works by Thomas Wolfe, Ernest Hemingway, F. Scott Fitzgerald and others.</td>
-      <td>Michael Grandage</td>
-      <td>[COLIN FIRTH, JUDE LAW, LAURA LINNEY, NICOLE KIDMAN]</td>
-      <td>2016</td>
-      <td>104</td>
-      <td>6.5</td>
-      <td>10708</td>
-      <td>1.36</td>
-      <td>NaN</td>
-      <td>4.723914</td>
-      <td>319765.218087</td>
-      <td>39.109930</td>
-      <td>144.901530</td>
-      <td>5.605937</td>
-      <td>9.216479e+05</td>
-      <td>57.330723</td>
-      <td>254.902948</td>
-      <td>2.517391</td>
-      <td>2969.646193</td>
-      <td>11.000000</td>
-      <td>0.756670</td>
+    <tr>
+      <th>2835843008996483487</th>
+      <td>5.3517</td>
+      <td>789661.2656</td>
+      <td>51.6722</td>
+      <td>255.1780</td>
+      <td>5.1318</td>
+      <td>1.359410e+06</td>
+      <td>49.2781</td>
+      <td>735.9137</td>
+      <td>5.7922</td>
+      <td>455623.7828</td>
+      <td>58.4791</td>
+      <td>200.8793</td>
       <td>0</td>
       <td>1</td>
-      <td>69602.0</td>
+      <td>3389609.3</td>
     </tr>
-    <tr height="20px">
-      <th>4810770130688835627</th>
-      <td>663</td>
-      <td>Gone Baby Gone</td>
-      <td>(CRIME, DRAMA, MYSTERY)</td>
-      <td>Two Boston area detectives investigate a little girl's kidnapping, which ultimately
-turns into a crisis both professionally and personally.</td>
-      <td>Ben Affleck</td>
-      <td>[CASEY AFFLECK, ED HARRIS, MICHELLE MONAGHAN, MORGAN FREEMAN]</td>
-      <td>2007</td>
-      <td>114</td>
-      <td>7.7</td>
-      <td>206707</td>
-      <td>20.30</td>
-      <td>72.0</td>
-      <td>5.704688</td>
-      <td>518464.075133</td>
-      <td>57.170043</td>
-      <td>176.527994</td>
-      <td>4.905568</td>
-      <td>8.253658e+05</td>
-      <td>47.877443</td>
-      <td>216.607492</td>
-      <td>5.590926</td>
-      <td>276075.596746</td>
-      <td>63.320084</td>
-      <td>144.028874</td>
+    <tr>
+      <th>-5208991504793575991</th>
+      <td>5.3651</td>
+      <td>383466.3286</td>
+      <td>55.6626</td>
+      <td>129.0771</td>
+      <td>5.8741</td>
+      <td>1.310945e+06</td>
+      <td>58.8132</td>
+      <td>487.4515</td>
+      <td>4.4501</td>
+      <td>117805.8500</td>
+      <td>31.4812</td>
+      <td>27.8688</td>
       <td>0</td>
       <td>1</td>
-      <td>1591643.9</td>
+      <td>304920.0</td>
+    </tr>
+    <tr>
+      <th>-3906669761161281092</th>
+      <td>5.8142</td>
+      <td>789592.3149</td>
+      <td>58.4410</td>
+      <td>322.1868</td>
+      <td>5.1318</td>
+      <td>1.359410e+06</td>
+      <td>49.2781</td>
+      <td>735.9137</td>
+      <td>4.1280</td>
+      <td>103695.3508</td>
+      <td>36.5084</td>
+      <td>136.6180</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1017685.5</td>
+    </tr>
+    <tr>
+      <th>-8931550020910511246</th>
+      <td>3.8973</td>
+      <td>123947.6180</td>
+      <td>33.5530</td>
+      <td>48.5503</td>
+      <td>3.1575</td>
+      <td>2.880630e+05</td>
+      <td>26.6311</td>
+      <td>95.5649</td>
+      <td>4.4769</td>
+      <td>165553.3248</td>
+      <td>35.0188</td>
+      <td>20.2966</td>
+      <td>0</td>
+      <td>0</td>
+      <td>312225.8</td>
     </tr>
   </tbody>
 </table>
-
 
 
 
