@@ -19,68 +19,239 @@
 | [![badge](https://img.shields.io/static/v1?label=Read%20and%20Go%20Slides&message=PDF&style=plastic&logo=Adobe%20Acrobat%20Reader&color=informational)](https://github.com/tavlarios/OPER3384/blob/main/Team%2010%20-%20Assignment%203.pdf) | 3 | *8-10 powerpoint slides meant as a “read-and-go” summary of your project findings and conclusions.* |
 
 
-
+---
 
 ## Dataset
-*Sample of 5 rows*
 
 
-|                hash |   Rank | Title                  | Genre                            | 
-Description                                                                                  
-| Director           | Actors                                                                
-|   Year |   Runtime |   Rating |   Votes |   Revenue |   Metascore |   ZEV_Rating_Actors |  
-ZEV_Votes_Actors |   ZEV_Metascore_Actors |   ZEV_Revenue_Actors |   ZEV_Rating_Genre |   
-ZEV_Votes_Genre |   ZEV_Metascore_Genre |   ZEV_Revenue_Genre |   ZEV_Rating_Director |   
-ZEV_Votes_Director |   ZEV_Metascore_Director |   ZEV_Revenue_Director |   Top_Director |   
-training |     Votes:Rating |
-|--------------------:|-------:|:-----------------------|:---------------------------------|:
----------------------------------------------------------------------------------------------
-----------------------------------------------------------|:-------------------|:------------
-------------------------------------------------------------------|-------:|----------:|-----
-----:|--------:|----------:|------------:|--------------------:|-------------------:|--------
----------------:|---------------------:|-------------------:|------------------:|------------
-----------:|--------------------:|----------------------:|---------------------:|------------
--------------:|-----------------------:|---------------:|-----------:|-----------------:|
-| -131466537480810030 |    915 | Notorious              | ('BIOGRAPHY', 'CRIME', 'DRAMA')  | 
-The life and death story of Notorious B.I.G. (a.k.a. Christopher Wallace), who came straight 
-out of Brooklyn to take the world of rap music by storm.  | George Tillman Jr. | ['ANTHONY 
-MACKIE', 'DEREK LUKE', 'JAMAL WOOLARD', 'MOMO DIONE']               |   2009 |       122 |   
-6.7 |   33007 |     36.84 |          60 |             2.87184 |            94474.1 |         
-25.3949 |              34.891  |            4.79953 |  761860           |               
-46.7792 |             210.646 |               4.36957 |      47911.5         |               
-36.5084 |                54.2466 |              0 |          1 | 221147           |
-| 2367002059956613531 |     37 | Interstellar           | ('ADVENTURE', 'DRAMA', 'SCI-FI') | 
-A team of explorers travel through a wormhole in space in an attempt to ensure humanity's 
-survival.                                                    | Christopher Nolan  | ['ANNE 
-HATHAWAY', 'JESSICA CHASTAIN', 'MACKENZIE FOY', 'MATTHEW MCCONAUGHEY'] |   2014 |       169 |
-8.6 | 1047747 |    187.99 |          74 |             6.58716 |           966459   |         
-65.8011 |             376.553  |            5.52278 |       1.35169e+06 |               
-55.7579 |             576.636 |               7.46994 |          1.79192e+06 |               
-80.636  |               842.959  |              1 |          1 |      9.01062e+06 |
-| 2276415888854380052 |    656 | Public Enemies         | ('BIOGRAPHY', 'CRIME', 'DRAMA')  | 
-The Feds try to take down notorious American gangsters John Dillinger, Baby Face Nelson and 
-Pretty Boy Floyd during a booming crime wave in the 1930s. | Michael Mann       | ['CHRISTIAN
-BALE', 'CHRISTIAN STOLTE', 'JASON CLARKE', 'JOHNNY DEPP']         |   2009 |       140 |     
-7   |  240323 |     97.03 |          70 |             6.59386 |           997540   |         
-66.4809 |             435.267  |            4.79953 |  761860           |               
-46.7792 |             210.646 |               3.30926 |      77468.4         |               
-33.5293 |                57.9354 |              0 |          1 |      1.68226e+06 |
-|   20417234348950511 |    279 | Everybody Wants Some!! | ('COMEDY',)                      | 
-In 1980, a group of college baseball players navigate their way through the freedoms and 
-responsibilities of unsupervised adulthood.                   | Richard Linklater  | ['BLAKE 
-JENNER', 'RYAN GUZMAN', 'TYLER HOECHLIN', 'ZOEY DEUTCH']              |   2016 |       117 | 
-7   |   36312 |      3.37 |          83 |             3.21142 |            38622.4 |         
-29.0897 |              18.7087 |            5.09468 |  809584           |               
-50.3605 |             420.302 |               3.6448  |      88293.8         |               
-45.0732 |                15.9847 |              0 |          1 | 254184           |
-| 5278245026850910347 |    756 | The Road               | ('ADVENTURE', 'DRAMA')           | 
-In a dangerous post-apocalyptic world, an ailing father defends his son as they slowly travel
-to the sea.                                              | John Hillcoat      | ['CHARLIZE 
-THERON', 'KODI SMIT-MCPHEE', 'ROBERT DUVALL', 'VIGGO MORTENSEN']   |   2009 |       111 |    
-7.3 |  187302 |      0.06 |         nan |             4.44242 |           359493   |         
-35.7994 |             122.587  |            6.93253 |       1.68097e+06 |               
-73.3552 |             713.022 |               4.45009 |     117806           |               
-31.4812 |                27.8688 |              0 |          0 |      1.3673e+06  |
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rank</th>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Description</th>
+      <th>Director</th>
+      <th>Actors</th>
+      <th>Year</th>
+      <th>Runtime</th>
+      <th>Rating</th>
+      <th>Votes</th>
+      <th>Revenue</th>
+      <th>Metascore</th>
+      <th>ZEV_Rating_Actors</th>
+      <th>ZEV_Votes_Actors</th>
+      <th>ZEV_Metascore_Actors</th>
+      <th>ZEV_Revenue_Actors</th>
+      <th>ZEV_Rating_Genre</th>
+      <th>ZEV_Votes_Genre</th>
+      <th>ZEV_Metascore_Genre</th>
+      <th>ZEV_Revenue_Genre</th>
+      <th>ZEV_Rating_Director</th>
+      <th>ZEV_Votes_Director</th>
+      <th>ZEV_Metascore_Director</th>
+      <th>ZEV_Revenue_Director</th>
+      <th>Top_Director</th>
+      <th>training</th>
+      <th>Votes:Rating</th>
+    </tr>
+    <tr>
+      <th>hash</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>787751000732048072</th>
+      <td>528</td>
+      <td>The Green Inferno</td>
+      <td>(ADVENTURE, HORROR)</td>
+      <td>A group of student activists travels to the Amazon to save the rain forest and soon
+discover that they are not alone, and that no good deed goes unpunished.</td>
+      <td>Eli Roth</td>
+      <td>[AARON BURNS, ARIEL LEVY, KIRBY BLISS BLANTON, LORENZA IZZO]</td>
+      <td>2013</td>
+      <td>100</td>
+      <td>5.4</td>
+      <td>26461</td>
+      <td>7.19</td>
+      <td>38.0</td>
+      <td>2.360227</td>
+      <td>20821.111964</td>
+      <td>18.626038</td>
+      <td>3.233097</td>
+      <td>3.691475</td>
+      <td>7.850377e+05</td>
+      <td>32.763256</td>
+      <td>468.315000</td>
+      <td>3.765595</td>
+      <td>41857.046487</td>
+      <td>36.508368</td>
+      <td>13.775852</td>
+      <td>0</td>
+      <td>1</td>
+      <td>142889.4</td>
+    </tr>
+    <tr>
+      <th>8408114765497397492</th>
+      <td>407</td>
+      <td>Zero Dark Thirty</td>
+      <td>(DRAMA, HISTORY, THRILLER)</td>
+      <td>A chronicle of the decade-long hunt for al-Qaeda terrorist leader Osama bin Laden 
+after the September 2001 attacks, and his death at the hands of the Navy S.E.A.L.s Team 6 in 
+May 2011.</td>
+      <td>Kathryn Bigelow</td>
+      <td>[CHRIS PRATT, JESSICA CHASTAIN, JOEL EDGERTON, MARK STRONG]</td>
+      <td>2012</td>
+      <td>157</td>
+      <td>7.4</td>
+      <td>226661</td>
+      <td>95.72</td>
+      <td>95.0</td>
+      <td>6.564821</td>
+      <td>698756.433580</td>
+      <td>71.919628</td>
+      <td>352.690274</td>
+      <td>4.711283</td>
+      <td>7.310547e+05</td>
+      <td>46.416928</td>
+      <td>208.897700</td>
+      <td>3.658223</td>
+      <td>158134.596874</td>
+      <td>46.190377</td>
+      <td>61.991336</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1677291.4</td>
+    </tr>
+    <tr>
+      <th>2716058472776138215</th>
+      <td>787</td>
+      <td>The Secret Scripture</td>
+      <td>(DRAMA,)</td>
+      <td>A woman keeps a diary of her extended stay at a mental hospital.</td>
+      <td>Jim Sheridan</td>
+      <td>[AIDAN TURNER, ERIC BANA, ROONEY MARA, THEO JAMES]</td>
+      <td>2016</td>
+      <td>108</td>
+      <td>6.8</td>
+      <td>378</td>
+      <td>NaN</td>
+      <td>37.0</td>
+      <td>4.534015</td>
+      <td>239543.531535</td>
+      <td>41.238127</td>
+      <td>88.559037</td>
+      <td>9.000000</td>
+      <td>1.791916e+06</td>
+      <td>100.000000</td>
+      <td>489.414866</td>
+      <td>2.557656</td>
+      <td>147.601000</td>
+      <td>17.889121</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2570.4</td>
+    </tr>
+    <tr>
+      <th>1563504084438618420</th>
+      <td>693</td>
+      <td>Genius</td>
+      <td>(BIOGRAPHY, DRAMA)</td>
+      <td>A chronicle of Max Perkins's time as the book editor at Scribner, where he oversaw 
+works by Thomas Wolfe, Ernest Hemingway, F. Scott Fitzgerald and others.</td>
+      <td>Michael Grandage</td>
+      <td>[COLIN FIRTH, JUDE LAW, LAURA LINNEY, NICOLE KIDMAN]</td>
+      <td>2016</td>
+      <td>104</td>
+      <td>6.5</td>
+      <td>10708</td>
+      <td>1.36</td>
+      <td>NaN</td>
+      <td>4.723914</td>
+      <td>319765.218087</td>
+      <td>39.109930</td>
+      <td>144.901530</td>
+      <td>5.605937</td>
+      <td>9.216479e+05</td>
+      <td>57.330723</td>
+      <td>254.902948</td>
+      <td>2.517391</td>
+      <td>2969.646193</td>
+      <td>11.000000</td>
+      <td>0.756670</td>
+      <td>0</td>
+      <td>1</td>
+      <td>69602.0</td>
+    </tr>
+    <tr>
+      <th>4810770130688835627</th>
+      <td>663</td>
+      <td>Gone Baby Gone</td>
+      <td>(CRIME, DRAMA, MYSTERY)</td>
+      <td>Two Boston area detectives investigate a little girl's kidnapping, which ultimately
+turns into a crisis both professionally and personally.</td>
+      <td>Ben Affleck</td>
+      <td>[CASEY AFFLECK, ED HARRIS, MICHELLE MONAGHAN, MORGAN FREEMAN]</td>
+      <td>2007</td>
+      <td>114</td>
+      <td>7.7</td>
+      <td>206707</td>
+      <td>20.30</td>
+      <td>72.0</td>
+      <td>5.704688</td>
+      <td>518464.075133</td>
+      <td>57.170043</td>
+      <td>176.527994</td>
+      <td>4.905568</td>
+      <td>8.253658e+05</td>
+      <td>47.877443</td>
+      <td>216.607492</td>
+      <td>5.590926</td>
+      <td>276075.596746</td>
+      <td>63.320084</td>
+      <td>144.028874</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1591643.9</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
 
 
 
