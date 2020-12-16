@@ -43,86 +43,21 @@ In addition to the variables from the original dataset, we calculated expected v
   
   *Note that "Revenue contribution" is the portion of revenue attributed to a given factor peer (e.g., ```Baba Booey```), as a percentage of all Revenue generated for all peers (e.g., ```Directors```).*
 
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Description</th>
-    </tr>
-    <tr>
-      <th>Column</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>```ZEV_Rating_Actors```</th>
-      <td>Expected Value of Rating, based on z-score of mean Rating of all Actors' previous 
-movies</td>
-    </tr>
-    <tr>
-      <th>```ZEV_Votes_Actors```</th>
-      <td>Expected Value of Votes, based on z-score of mean Votes of all Actors' previous 
-movies</td>
-    </tr>
-    <tr>
-      <th>```ZEV_Metascore_Actors```</th>
-      <td>Expected Value of Metascore, based on z-score of mean Metascore of all Actors' 
-previous movies</td>
-    </tr>
-    <tr>
-      <th>```ZEV_Revenue_Actors```</th>
-      <td>Expected Value of Revenue contribution for each involved actor (as a percentage of 
-all previous movies), based on z-score of mean contribution of all Actors' previous 
-movies</td>
-    </tr>
-    <tr>
-      <th>```ZEV_Rating_Genre```</th>
-      <td>Expected Value of Rating, based on z-score of mean Rating of all Genres of the 
-movie</td>
-    </tr>
-    <tr>
-      <th>```ZEV_Votes_Genre```</th>
-      <td>Expected Value of Votes, based on z-score of mean Votes of all Genres of the 
-movie</td>
-    </tr>
-    <tr>
-      <th>```ZEV_Metascore_Genre```</th>
-      <td>Expected Value of Metascore, based on z-score of mean Metascore of all Genres of 
-the movie</td>
-    </tr>
-    <tr>
-      <th>```ZEV_Revenue_Genre```</th>
-      <td>Expected Value of Revenue contribution for each Genre listed, based on z-score of 
-mean contribution for previous Genres</td>
-    </tr>
-    <tr>
-      <th>```ZEV_Rating_Director```</th>
-      <td>Expected Value of Rating, based on z-score of mean Rating for a Director's previous
-movies</td>
-    </tr>
-    <tr>
-      <th>```ZEV_Votes_Director```</th>
-      <td>Expected Value of Votes, based on z-score of mean Votes for a Director's previous 
-movies</td>
-    </tr>
-    <tr>
-      <th>```ZEV_Metascore_Director```</th>
-      <td>Expected Value of Metascore, based on z-score of mean Metascore for a Director's 
-previous movies</td>
-    </tr>
-    <tr>
-      <th>```ZEV_Revenue_Director```</th>
-      <td>Expected Value of Revenue contribution for a Director's previous movies, based on 
-z-score of mean contribution for a Director's previous movies</td>
-    </tr>
-    <tr>
-      <th>```Top_Director```</th>
-      <td>A binary flag indicating whether or not a movie's director was in the top 15 
-directors, by number of movies in the dataset.</td>
-    </tr>
-  </tbody>
-</table>
+| Column                       | Description                                                 |
+|:-----------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```ZEV_Rating_Actors```      | Expected Value of Rating, based on z-score of mean Rating ofall Actors' previous movies                                                                  |
+| ```ZEV_Votes_Actors```       | Expected Value of Votes, based on z-score of mean Votes of all Actors' previous movies                                                                  |
+| ```ZEV_Metascore_Actors```   | Expected Value of Metascore, based on z-score of mean Metascore of all Actors' previous movies                                                     |
+| ```ZEV_Revenue_Actors```     | Expected Value of Revenue contribution for each involved actor (as a percentage of all previous movies), based on z-score of mean contribution of all Actors' previous movies |
+| ```ZEV_Rating_Genre```       | Expected Value of Rating, based on z-score of mean Rating ofall Genres of the movie                                                                      |
+| ```ZEV_Votes_Genre```        | Expected Value of Votes, based on z-score of mean Votes of all Genres of the movie                                                                      |
+| ```ZEV_Metascore_Genre```    | Expected Value of Metascore, based on z-score of mean Metascore of all Genres of the movie                                                         |
+| ```ZEV_Revenue_Genre```      | Expected Value of Revenue contribution for each Genre listed, based on z-score of mean contribution for previous Genres                            |
+| ```ZEV_Rating_Director```    | Expected Value of Rating, based on z-score of mean Rating for a Director's previous movies                                                             |
+| ```ZEV_Votes_Director```     | Expected Value of Votes, based on z-score of mean Votes for a Director's previous movies                                                                 |
+| ```ZEV_Metascore_Director``` | Expected Value of Metascore, based on z-score of mean Metascore for a Director's previous movies                                                   |
+| ```ZEV_Revenue_Director```   | Expected Value of Revenue contribution for a Director's previous movies, based on z-score of mean contribution for a Director's previous movies      |
+| ```Top_Director```           | A binary flag indicating whether or not a movie's director was in the top 15 directors, by number of movies in the dataset.                             |
 
 
 
