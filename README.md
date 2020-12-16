@@ -303,7 +303,7 @@ tree0 <- rpart(Revenue ~
 rpart.plot(tree0, nn=TRUE, yesno=2, type=0)
 ```
 
-<img src="README_figs/README-unnamed-chunk-13-1.png" width="672" />
+<img src="images/rtree_basemodel_plot_1.png" width="672" />
 
 ***Train-Test MSE***
 
@@ -327,7 +327,7 @@ tree1 <- rpart(Revenue ~ .-ZEV_Revenue_Actors -ZEV_Revenue_Genre -ZEV_Revenue_Di
 rpart.plot(tree1, nn=TRUE, yesno=2, type=0)
 ```
 
-<img src="README_figs/README-unnamed-chunk-15-1.png" width="672" />
+<img src="images/rtree_finalmodel_plot_1.png" width="672" />
 
 ***Train-Test MSE***
 
