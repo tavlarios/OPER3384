@@ -491,6 +491,26 @@ cat("Training MSE: ", trainMSE4, "\n    Test MSE: ", testMSE4)
 
 ---
 
+## Miscellaneous Charts
+
+*To view the interactive plots, launch [![badge](https://img.shields.io/static/v1?label=IMDB%20Movie%20Data%20Analysis&message=Jupyter%20Notebook&style=plastic&logo=Jupyter&color=orange)](https://mybinder.org/v2/gh/tavlarios/OPER3384/HEAD?filepath=IMDB%20Project.ipynb)*
+
+
+<img src="images/revcontrib_genre.png" />
+
+<img src="images/revdistrib_genre.png" />
+
+<img src="images/castmean_top100.png" />
+
+<img src="images/castmean_sample100.png" />
+
+<img src="images/zrevcontrib_actor_1.png" />
+
+<img src="images/zrevcontrib_director.png" />
+
+<img src="images/correl_matrix_1.png" />
+
+<img src="images/regerror_1.png" />
 
 
 
